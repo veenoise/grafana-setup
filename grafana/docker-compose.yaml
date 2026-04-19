@@ -9,5 +9,9 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - grafana-storage:/var/lib/grafana
+    environment:
+      - "GF_SERVER_ROOT_URL=https://grafana.sabihinmolang.eu.org"
+      - "GF_SERVER_DOMAIN=grafana.sabihinmolang.eu.org"
+      - "GF_SERVER_ENFORCE_DOMAIN=true"
 volumes:
   grafana-storage: {}
