@@ -1,0 +1,51 @@
+local.file_match "local_files" {
+  path_targets = [{"__path__" = "/var/log/nginx/wordpress.*.log"}]
+  sync_period = "5s"
+}
+
+loki.source.file "log_scrape" {
+  targets    = local.file_match.local_files.targets
+  forward_to = [loki.write.grafana_loki.receiver]
+  tail_from_end = true
+}
+
+loki.write "grafana_loki" {
+  endpoint {
+    url = "https://loki.sabihinmolang.eu.org/loki/api/v1/push"
+
+    basic_auth {
+      username = "loki"
+      password = "password"
+    }
+  }
+}
+
+prometheus.exporter.unix "local_system" { }
+
+prometheus.scrape "scrape_metrics" {
+  targets         = prometheus.exporter.unix.local_system.targets
+  forward_to      = [prometheus.relabel.filter_metrics.receiver]
+  scrape_interval = "10s"
+}
+
+prometheus.relabel "filter_metrics" {
+  rule {
+    action        = "drop"
+    source_labels = ["env"]
+    regex         = "dev"
+  }
+
+  forward_to = [prometheus.remote_write.metrics_service.receiver]
+}
+
+prometheus.remote_write "metrics_service" {
+    endpoint {
+        url = "https://prometheus.sabihinmolang.eu.org/api/v1/write"
+
+        basic_auth {
+          username = "prometheus"
+          password = "password"
+        }
+    }
+}
+
