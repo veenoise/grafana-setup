@@ -12,4 +12,4 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-remote-write-receiver'
-      - '--web.enable-lifecycle '
+      - '--web.enable-lifecycle'
