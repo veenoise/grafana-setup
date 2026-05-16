@@ -3,23 +3,10 @@
   "kind": "Dashboard",
   "metadata": {
     "name": "adrt58v",
-    "namespace": "default",
-    "uid": "24450b1f-e559-44ed-a261-b1c56cf94b65",
-    "resourceVersion": "1776783289176982",
-    "generation": 3,
-    "creationTimestamp": "2026-04-21T14:42:09Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "1966149771079680"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:bfjgruubp7p4wa",
-      "grafana.app/folder": "dfjqemplbipdsd",
-      "grafana.app/saved-from-ui": "Grafana v13.0.1 (a100054f21)",
-      "grafana.app/updatedBy": "user:bfjgruubp7p4wa",
-      "grafana.app/updatedTimestamp": "2026-04-21T14:54:49Z",
-      "grafana.app/folderTitle": "wordpress",
-      "grafana.app/folderUrl": "/dashboards/f/dfjqemplbipdsd/wordpress"
-    }
+    "generation": 5,
+    "creationTimestamp": "2026-05-16T07:59:37Z",
+    "labels": {},
+    "annotations": {}
   },
   "spec": {
     "annotations": [
@@ -30,10 +17,10 @@
             "kind": "DataQuery",
             "group": "grafana",
             "version": "v0",
-            "datasource": {
-              "name": "grafana"
-            },
-            "spec": {}
+            "spec": {},
+            "labels": {
+              "grafana.app/export-label": "grafana-1"
+            }
           },
           "enable": true,
           "hide": true,
@@ -65,14 +52,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "{filename=~\"$filename\"}",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -131,14 +118,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "topk(10, \n  sum by (path) (\n    count_over_time(\n      {filename=~\"$filename\"} \n      | regexp `\"(GET|POST) (?P<path>\\S+) HTTP` \n      [$__interval]\n    )\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -272,14 +259,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "sum by (statuscode) (\n  count_over_time(\n    {filename=~\"$filename\"} \n    | regexp `HTTP\\/[\\d\\.]+\" (?P<statuscode>\\d{3})`\n    [$__interval]\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -450,15 +437,15 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "topk(10, sum by(ipaddress) (count_over_time({filename=~\"$filename\"} | regexp `^(?P<ipaddress>[\\d\\.]+) ` [$__interval])))",
                         "legendFormat": "",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -591,14 +578,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "count_over_time({filename=~\"$filename\"}[$__interval])",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-2"
                       }
                     },
                     "refId": "A",
@@ -671,14 +658,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "sum by (statuscode) (\n  count_over_time(\n    {filename=~\"$filename\"} \n    | regexp \"HTTP/[\\\\d\\\\.]+\\\" (?P<statuscode>\\\\d{3}) \" \n    [$__interval]\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-2"
                       }
                     },
                     "refId": "A",
@@ -811,14 +798,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "topk(10, \n  sum by (refferer) (\n    count_over_time(\n      {filename=~\"$filename\"} \n      | regexp `HTTP\\/[\\d\\.]+\" \\d{3} \\d+ (?P<refferer>\".*?\")` \n      [$__interval]\n    )\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -948,14 +935,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "topk(10, \n  sum by (useragent) (\n    count_over_time(\n      {filename=~\"$filename\"} \n      | regexp `HTTP\\/[\\d\\.]+\" \\d{3} \\d+ \".*?\" \"(?P<useragent>.*)\"` \n      [$__interval]\n    )\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -1085,14 +1072,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "count_over_time(\n  {filename=~\"$filename\"} \n  | regexp `HTTP\\/[\\d\\.]+\" (?P<statuscode>\\d{3}) (?P<value>\\d+) (?P<refferer>\".*?\") \"(?P<useragent>.*)\"` \n  [5m]\n)",
-                        "queryType": "instant"
+                        "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-2"
                       }
                     },
                     "refId": "A",
@@ -1199,14 +1186,14 @@
                       "kind": "DataQuery",
                       "group": "loki",
                       "version": "v0",
-                      "datasource": {
-                        "name": "dfjgz50frplhca"
-                      },
                       "spec": {
                         "direction": "backward",
                         "editorMode": "code",
                         "expr": "sum by (statuscode) (\n  count_over_time(\n    {filename=~\"$filename\"} \n    | regexp `HTTP\\/[\\d\\.]+\" (?P<statuscode>\\d{3}) (?P<value>\\d+) (?P<refferer>\".*?\") \"(?P<useragent>.*)\"` \n    [$__interval]\n  )\n)",
                         "queryType": "range"
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "loki-1"
                       }
                     },
                     "refId": "A",
@@ -1533,8 +1520,8 @@
         "spec": {
           "name": "filename",
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": "",
+            "value": ""
           },
           "label": "Filename",
           "hide": "dontHide",
@@ -1545,14 +1532,14 @@
             "kind": "DataQuery",
             "group": "loki",
             "version": "v0",
-            "datasource": {
-              "name": "dfjgz50frplhca"
-            },
             "spec": {
               "label": "filename",
               "refId": "LokiVariableQueryEditor-VariableQuery",
               "stream": "",
               "type": 1
+            },
+            "labels": {
+              "grafana.app/export-label": "loki-2"
             }
           },
           "regex": "",

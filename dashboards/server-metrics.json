@@ -3,23 +3,10 @@
   "kind": "Dashboard",
   "metadata": {
     "name": "adfgdf7",
-    "namespace": "default",
-    "uid": "bee7257e-2efa-4c3a-9cc3-eeec70ca7936",
-    "resourceVersion": "1776783484777008",
-    "generation": 5,
-    "creationTimestamp": "2026-04-21T14:39:33Z",
-    "labels": {
-      "grafana.app/deprecatedInternalID": "1965494989893632"
-    },
-    "annotations": {
-      "grafana.app/createdBy": "user:bfjgruubp7p4wa",
-      "grafana.app/folder": "afjji5mcfliiob",
-      "grafana.app/saved-from-ui": "Grafana v13.0.1 (a100054f21)",
-      "grafana.app/updatedBy": "user:bfjgruubp7p4wa",
-      "grafana.app/updatedTimestamp": "2026-04-21T14:58:04Z",
-      "grafana.app/folderTitle": "prd-william-homelab",
-      "grafana.app/folderUrl": "/dashboards/f/afjji5mcfliiob/prd-william-homelab"
-    }
+    "generation": 1,
+    "creationTimestamp": "2026-04-25T04:38:44Z",
+    "labels": {},
+    "annotations": {}
   },
   "spec": {
     "annotations": [
@@ -30,14 +17,14 @@
             "kind": "DataQuery",
             "group": "grafana",
             "version": "v0",
-            "datasource": {
-              "name": "grafana"
-            },
             "spec": {
               "limit": 100,
               "matchAny": false,
               "tags": [],
               "type": "dashboard"
+            },
+            "labels": {
+              "grafana.app/export-label": "grafana-1"
             }
           },
           "enable": true,
@@ -21788,8 +21775,8 @@
           "refresh": "onDashboardLoad",
           "regex": "",
           "current": {
-            "text": "prometheus",
-            "value": "afjgzp3zaw6psf"
+            "text": "",
+            "value": ""
           },
           "options": [],
           "multi": false,
@@ -21805,8 +21792,8 @@
         "spec": {
           "name": "job",
           "current": {
-            "text": "integrations/unix",
-            "value": "integrations/unix"
+            "text": "",
+            "value": ""
           },
           "label": "Job",
           "hide": "dontHide",
@@ -21839,8 +21826,8 @@
         "spec": {
           "name": "nodename",
           "current": {
-            "text": "prd-william-homelab",
-            "value": "prd-william-homelab"
+            "text": "",
+            "value": ""
           },
           "label": "Nodename",
           "hide": "dontHide",
@@ -21873,8 +21860,8 @@
         "spec": {
           "name": "node",
           "current": {
-            "text": "prd-william-homelab",
-            "value": "prd-william-homelab"
+            "text": "",
+            "value": ""
           },
           "label": "Instance",
           "hide": "dontHide",
